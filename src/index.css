@@ -1,0 +1,431 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Boot Animation */
+.boot-animation {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-indigo-600 to-purple-700;
+  animation: fadeOut 0.5s ease-in-out 2.5s forwards;
+}
+
+.boot-animation__logo {
+  @apply relative flex items-center justify-center;
+  animation: scalePulse 2s ease-in-out;
+}
+
+.boot-animation__circle {
+  @apply absolute rounded-full border-4 border-white/20;
+  animation: expandCircle 1.5s ease-in-out forwards;
+}
+
+.boot-animation__icon {
+  @apply relative text-white transform scale-0;
+  animation: scaleIn 0.5s ease-out 0.5s forwards;
+}
+
+.boot-animation__text {
+  @apply absolute top-full mt-8 text-white text-xl font-bold tracking-wider opacity-0;
+  animation: fadeIn 0.5s ease-out 1s forwards;
+}
+
+.boot-animation__progress {
+  @apply absolute bottom-16 w-48 h-1 bg-white/20 rounded-full overflow-hidden;
+}
+
+/* .boot-animation__progress-bar {
+  @apply h-full bg-white rounded-full;
+  animation: progress 2s ease-in-out forwards;
+} */
+
+@keyframes fadeOut {
+  from { opacity: 1; visibility: visible; }
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes scalePulse {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes expandCircle {
+  0% { 
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+  }
+  100% { 
+    width: 120px;
+    height: 120px;
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* Base styles */
+body {
+  @apply bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 min-h-screen dark:from-gray-900 dark:via-gray-800 dark:to-gray-900;
+}
+
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  @apply bg-gray-900;
+}
+
+/* Responsive container */
+.container {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+/* Glassmorphism */
+.glass {
+  @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-lg dark:bg-gray-800/70 dark:border-gray-700/20;
+}
+
+.glass-card {
+  @apply glass rounded-2xl transition-all duration-300 hover:shadow-xl hover:bg-white/80 dark:hover:bg-gray-800/80;
+}
+
+.glass-button {
+  @apply glass px-4 py-2 rounded-lg hover:bg-white/90 transition-all duration-300 active:scale-95 dark:hover:bg-gray-800/90;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth scroll snap */
+.scroll-snap-align-start {
+  scroll-snap-align: start;
+}
+
+/* Map styles */
+.mapboxgl-popup-content {
+  @apply glass rounded-xl border-0 shadow-lg !important;
+}
+
+.mapboxgl-popup-close-button {
+  @apply text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 !important;
+}
+
+/* Map container styles */
+.map-container {
+  @apply w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden;
+}
+
+/* Business card hover effects */
+.business-card {
+  @apply glass-card;
+}
+
+.business-card:hover {
+  @apply transform scale-[1.02];
+}
+
+/* Animation for scroll buttons */
+.scroll-button {
+  @apply glass transition-all duration-300;
+}
+
+.scroll-button:hover {
+  @apply bg-white/90 dark:bg-gray-800/90;
+}
+
+/* Business Idea Analysis Styles */
+.idea-analysis-card {
+  @apply glass-card p-4 sm:p-6;
+}
+
+.success-probability-meter {
+  @apply h-2 bg-gray-200/50 dark:bg-gray-700/50 rounded-full overflow-hidden;
+}
+
+.success-probability-meter .fill {
+  @apply h-full transition-all duration-1000 ease-out;
+}
+
+.success-probability-meter .fill.high {
+  @apply bg-gradient-to-r from-green-400/80 to-green-500/80;
+}
+
+.success-probability-meter .fill.medium {
+  @apply bg-gradient-to-r from-yellow-400/80 to-yellow-500/80;
+}
+
+.success-probability-meter .fill.low {
+  @apply bg-gradient-to-r from-red-400/80 to-red-500/80;
+}
+
+/* Form styles */
+.form-input,
+.form-select,
+.form-textarea {
+  @apply glass rounded-lg border-0 focus:ring-2 focus:ring-indigo-500/50 dark:bg-gray-700 dark:text-white !important;
+}
+
+/* Button styles */
+.btn {
+  @apply glass-button;
+}
+
+.btn-primary {
+  @apply bg-indigo-600/90 text-white hover:bg-indigo-700/90 dark:bg-indigo-500/90 dark:hover:bg-indigo-600/90;
+}
+
+.btn-secondary {
+  @apply bg-gray-500/90 text-white hover:bg-gray-600/90 dark:bg-gray-600/90 dark:hover:bg-gray-700/90;
+}
+
+/* Card styles */
+.card {
+  @apply glass-card p-4 sm:p-6;
+}
+
+/* Navigation styles */
+.nav-link {
+  @apply glass-button text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white;
+}
+
+.nav-link.active {
+  @apply bg-indigo-600/90 text-white hover:bg-indigo-700/90;
+}
+
+/* Table styles */
+.table {
+  @apply w-full overflow-x-auto;
+}
+
+.table-container {
+  @apply overflow-x-auto -mx-4 sm:mx-0;
+}
+
+.table th {
+  @apply px-4 py-2 text-left text-sm font-medium text-gray-600 dark:text-gray-400 whitespace-nowrap;
+}
+
+.table td {
+  @apply px-4 py-2 text-sm text-gray-700 dark:text-gray-300 whitespace-nowrap;
+}
+
+.table tr {
+  @apply border-b border-gray-200/30 dark:border-gray-700/30;
+}
+
+/* Modal styles */
+.modal-backdrop {
+  @apply fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-black/40;
+}
+
+.modal-content {
+  @apply glass-card p-4 sm:p-6 max-w-lg w-full mx-auto mt-20;
+}
+
+/* Grid layouts */
+.responsive-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6;
+}
+
+.responsive-grid-tight {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4;
+}
+
+/* Typography */
+.heading-1 {
+  @apply text-3xl sm:text-4xl font-bold dark:text-white;
+}
+
+.heading-2 {
+  @apply text-2xl sm:text-3xl font-bold dark:text-white;
+}
+
+.heading-3 {
+  @apply text-xl sm:text-2xl font-bold dark:text-white;
+}
+
+/* Spacing */
+.section {
+  @apply py-8 sm:py-12 md:py-16;
+}
+
+.section-sm {
+  @apply py-6 sm:py-8;
+}
+
+/* Responsive padding */
+.responsive-padding {
+  @apply p-4 sm:p-6 md:p-8;
+}
+
+/* Responsive margin */
+.responsive-margin {
+  @apply m-4 sm:m-6 md:m-8;
+}
+
+/* Responsive gap */
+.responsive-gap {
+  @apply gap-4 sm:gap-6 md:gap-8;
+}
+
+/* Responsive text */
+.responsive-text {
+  @apply text-sm sm:text-base dark:text-gray-300;
+}
+
+.responsive-text-lg {
+  @apply text-base sm:text-lg dark:text-gray-200;
+}
+
+/* Responsive images */
+.responsive-image {
+  @apply w-full h-auto object-cover;
+}
+
+/* Responsive flex */
+.responsive-flex {
+  @apply flex flex-col sm:flex-row;
+}
+
+/* Responsive stack */
+.responsive-stack {
+  @apply space-y-4 sm:space-y-6;
+}
+
+/* Responsive width */
+.responsive-width {
+  @apply w-full sm:w-auto;
+}
+
+/* Responsive height */
+.responsive-height {
+  @apply h-[200px] sm:h-[300px] md:h-[400px];
+}
+
+/* Responsive border radius */
+.responsive-rounded {
+  @apply rounded-lg sm:rounded-xl;
+}
+
+/* Responsive shadow */
+.responsive-shadow {
+  @apply shadow-sm sm:shadow-md;
+}
+
+/* Responsive backdrop blur */
+.responsive-blur {
+  @apply backdrop-blur-sm sm:backdrop-blur-md;
+}
+
+/* Responsive opacity */
+.responsive-opacity {
+  @apply opacity-75 sm:opacity-100;
+}
+
+/* Responsive transform */
+.responsive-transform {
+  @apply scale-95 sm:scale-100;
+}
+
+/* Responsive transition */
+.responsive-transition {
+  @apply transition-all duration-300;
+}
+
+/* Responsive animation */
+.responsive-animation {
+  @apply animate-pulse sm:animate-none;
+}
+
+/* Responsive z-index */
+.responsive-z {
+  @apply z-10 sm:z-20;
+}
+
+/* Responsive position */
+.responsive-position {
+  @apply relative sm:absolute;
+}
+
+/* Responsive display */
+.responsive-display {
+  @apply hidden sm:block;
+}
+
+/* Responsive overflow */
+.responsive-overflow {
+  @apply overflow-auto sm:overflow-visible;
+}
+
+/* Responsive cursor */
+.responsive-cursor {
+  @apply cursor-pointer sm:cursor-default;
+}
+
+/* Responsive user select */
+.responsive-select {
+  @apply select-none sm:select-auto;
+}
+
+/* Responsive pointer events */
+.responsive-pointer {
+  @apply pointer-events-none sm:pointer-events-auto;
+}
+
+/* Responsive visibility */
+.responsive-visibility {
+  @apply invisible sm:visible;
+}
+
+/* Responsive opacity */
+.responsive-opacity {
+  @apply opacity-0 sm:opacity-100;
+}
+
+/* Responsive transform origin */
+.responsive-origin {
+  @apply origin-top-left sm:origin-center;
+}
+
+/* Responsive will change */
+.responsive-will-change {
+  @apply will-change-transform sm:will-change-auto;
+}
+
+/* Responsive backdrop filter */
+.responsive-backdrop {
+  @apply backdrop-filter sm:backdrop-filter-none;
+}
+
+/* Responsive mix blend mode */
+.responsive-blend {
+  @apply mix-blend-multiply sm:mix-blend-normal;
+}
+
+/* Responsive isolation */
+.responsive-isolation {
+  @apply isolate sm:isolation-auto;
+}
